@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToDoItem } from './../../entities/todo';
 import { TodoService } from './../../service/todo.service';
@@ -12,6 +13,14 @@ export class TodoEditComponent implements OnInit {
 
   public selectedTodoItem: ToDoItem;
   public minDate: Date;
+  public stepHour = 1;
+  public stepMinute = 1;
+  public stepSecond = 1;
+  public color: ThemePalette = 'primary';
+  public showSpinners = true;
+  public showSeconds = false;
+  public touchUi = false;
+  public enableMeridian = false;
 
   constructor(private route: ActivatedRoute, private todoService: TodoService, private router: Router) { }
 
