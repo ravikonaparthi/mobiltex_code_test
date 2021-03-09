@@ -1,0 +1,37 @@
+<mat-table [dataSource]="todoItems">
+    <ng-container matColumnDef="ID">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'customWidth'">ID</mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="'customWidth'"> {{element.ID}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Description">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'customWidth'">Description</mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="'customWidth'"> {{element.Description}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="DueByDate">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'customWidth'">DueByDate</mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="'customWidth'"> {{element.DueByDate | date :'short' }}
+        </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="IsCompleted">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'customWidth'">Status</mat-header-cell>
+        <mat-cell [ngClass]="'customWidth'" *matCellDef="let element">
+            <input type="checkbox" disabled="disabled" [(ngModel)]="element.IsCompleted">
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'customWidth'"> Action </mat-header-cell>
+        <mat-cell [ngClass]="'customWidth'" *matCellDef="let element">
+            <a class="anchorClass" (click)="onEdit(element)">Edit</a>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
